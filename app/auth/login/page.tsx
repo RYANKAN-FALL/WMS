@@ -177,9 +177,6 @@ export default function LoginPage() {
                     Lupa password?
                   </Link>
                 </div>
-                <div className="text-center text-sm text-muted-foreground">
-                  Demo: admin/password, staff/password, supervisor/password
-                </div>
               </CardFooter>
             </form>
           </Card>
