@@ -30,7 +30,7 @@ export default async function StockMovementReportPage() {
   });
 
   // Group by date (UTC to keep stable)
-  const movementsByDate: Record<string, typeof logs> = {};
+  const movementsByDate: Record<string, (typeof logs)> = {};
   logs.forEach((movement: (typeof logs)[number]) => {
     const date = movement.createdAt.toISOString().split('T')[0];
     if (!movementsByDate[date]) {
@@ -66,7 +66,7 @@ export default async function StockMovementReportPage() {
                     {format(new Date(date), "dd MMMM yyyy", { locale })}
                   </h3>
                   <div className="space-y-3">
-                    {movementsForDate.map(movement => {
+                    {movementsForDate.map((movement: (typeof logs)[number]) => {
                       const product = movement.product;
                       return (
                         <div key={movement.id} className="flex justify-between items-center border-b pb-2 last:border-0 last:pb-0">
