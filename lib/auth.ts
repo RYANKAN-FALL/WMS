@@ -112,12 +112,21 @@ export const authOptions: NextAuthOptions = {
   },
   events: {
     async signIn({ user }) {
+      type AuthUser = {
+        id?: string;
+        username?: string;
+        nama_lengkap?: string;
+        name?: string | null;
+        email?: string | null;
+      };
+      const u = user as AuthUser;
+
       // Fire-and-forget login notifications based on settings
       notifyLogin({
-        userId: (user as any)?.id,
-        username: (user as any)?.username,
-        nama: (user as any)?.nama_lengkap || user.name,
-        email: user.email,
+        userId: u.id,
+        username: u.username,
+        nama: u.nama_lengkap || u.name || undefined,
+        email: u.email || undefined,
       });
     },
   },

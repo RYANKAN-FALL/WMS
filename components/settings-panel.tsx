@@ -34,7 +34,7 @@ export function SettingsPanel({ user, initialSettings }: SettingsPanelProps) {
   const [message, setMessage] = useState<string | null>(null);
   const { setTheme } = useTheme();
 
-  const action = async (url: string, method: "POST" | "PUT" = "POST", body?: any) => {
+  const action = async (url: string, method: "POST" | "PUT" = "POST", body?: unknown) => {
     const res = await fetch(url, {
       method,
       headers: { "Content-Type": "application/json" },

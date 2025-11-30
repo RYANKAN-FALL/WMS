@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
     username: session.user?.username,
     nama: session.user?.nama_lengkap,
     email: session.user?.email || undefined,
-    ip: (req as any)?.headers?.get?.("x-forwarded-for") || undefined,
-    userAgent: (req as any)?.headers?.get?.("user-agent") || undefined,
+    ip: req.headers.get("x-forwarded-for") || undefined,
+    userAgent: req.headers.get("user-agent") || undefined,
   });
 
   return Response.json({ ok: true, message: "Test login notification dispatched" });
