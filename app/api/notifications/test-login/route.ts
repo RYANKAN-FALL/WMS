@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     userId: session.user?.id,
     username: session.user?.username,
     nama: session.user?.nama_lengkap,
-    email: session.user?.email,
+    email: session.user?.email || undefined,
     ip: (req as any)?.headers?.get?.("x-forwarded-for") || undefined,
     userAgent: (req as any)?.headers?.get?.("user-agent") || undefined,
   });
