@@ -36,7 +36,7 @@ export default async function BestSellersReportPage() {
     });
 
     const map: Record<string, { qty: number; revenue: number; name: string; sku: string }> = {};
-    items.forEach((it) => {
+    items.forEach((it: (typeof items)[number]) => {
       const key = it.productId;
       if (!map[key]) {
         map[key] = {
