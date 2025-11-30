@@ -34,7 +34,7 @@ export default async function CategoriesPage() {
       },
     });
 
-    transformedCategories = categories.map(category => ({
+    transformedCategories = categories.map((category: (typeof categories)[number]) => ({
       id: category.id,
       name: category.name,
       description: category.description,
