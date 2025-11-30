@@ -18,7 +18,7 @@ export async function GET(_req: NextRequest) {
 
   const header = "sku,name,category,stock,min_stock,rack\n";
   const rows = products
-    .map((p) =>
+    .map((p: (typeof products)[number]) =>
       [
         p.sku,
         p.name,
