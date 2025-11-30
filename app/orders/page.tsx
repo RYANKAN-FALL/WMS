@@ -66,13 +66,13 @@ export default async function OrdersPage() {
       "cancelled": "batal"
     };
 
-    transformedOrders = orders.map(order => ({
+    transformedOrders = orders.map((order: (typeof orders)[number]) => ({
       id: order.id,
       nomor_order: order.orderId,
       customer_nama: order.user?.nama_lengkap || (lang === "en" ? "Customer" : "Customer"),
       customer_alamat: "",
       customer_telepon: "",
-      produk: order.orderItems.map(item => ({
+      produk: order.orderItems.map((item: (typeof order.orderItems)[number]) => ({
         produk_id: item.productId,
         nama_produk: item.product?.name || (lang === "en" ? "Unknown Product" : "Produk"),
         jumlah: item.quantity,
