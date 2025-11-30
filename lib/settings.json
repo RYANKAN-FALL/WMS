@@ -1,0 +1,34 @@
+{
+  "profile": {
+    "nama": "Admin Users",
+    "email": "admin@example.com",
+    "username": "admin",
+    "role": "admin"
+  },
+  "security": {
+    "twoFactor": false,
+    "loginAlert": true,
+    "otpHint": "Gunakan kode 246810 untuk demo"
+  },
+  "preference": {
+    "language": "id",
+    "currency": "IDR",
+    "theme": "system"
+  },
+  "notification": {
+    "email": true,
+    "sms": false,
+    "push": true
+  },
+  "integration": {
+    "webhooks": "",
+    "apiKey": "wms-demo-api-key"
+  },
+  "companyName": "WMS Demo",
+  "currency": "IDR",
+  "lowStockThreshold": 10,
+  "notifications": {
+    "email": false,
+    "sms": false
+  }
+}

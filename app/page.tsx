@@ -1,65 +1,116 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Package,
+  BarChart3,
+  ShoppingCart,
+  Settings,
+  Users,
+  FileText
+} from "lucide-react";
 
 export default function Home() {
+  const features = [
+    {
+      title: "Inventory Management",
+      description: "Track and manage your warehouse inventory in real-time",
+      icon: Package,
+    },
+    {
+      title: "Order Processing",
+      description: "Handle orders efficiently from placement to fulfillment",
+      icon: ShoppingCart,
+    },
+    {
+      title: "Reporting & Analytics",
+      description: "Get insights with detailed reports and analytics",
+      icon: BarChart3,
+    },
+    {
+      title: "User Management",
+      description: "Manage staff roles and permissions",
+      icon: Users,
+    },
+    {
+      title: "Documentation",
+      description: "Access to comprehensive system documentation",
+      icon: FileText,
+    },
+    {
+      title: "System Settings",
+      description: "Customize system preferences and configurations",
+      icon: Settings,
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <section className="py-16 md:py-24 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">
+              Warehouse Management System
+            </h1>
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+              Streamline your warehouse operations with our comprehensive management platform.
+              Real-time inventory tracking, order processing, and analytics to optimize your workflow.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="px-8 py-6 text-lg">
+                <Link href="/auth/login">Get Started</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="px-8 py-6 text-lg">
+                <Link href="/dashboard">View Demo</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-16">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Features</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Everything you need to efficiently manage your warehouse operations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="p-2 bg-primary/10 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                    <feature.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 text-center">
+          <Card className="max-w-3xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Ready to optimize your warehouse?</CardTitle>
+              <CardDescription className="text-lg">
+                Join thousands of businesses using our platform to streamline their operations
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild size="lg" className="px-8 py-6 text-lg">
+                <Link href="/auth/register">Start Free Trial</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </section>
+      </div>
     </div>
   );
 }
