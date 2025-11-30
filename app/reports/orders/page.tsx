@@ -32,6 +32,7 @@ export default async function OrdersReportPage() {
     currency: currencyCode,
     maximumFractionDigits: 0,
   });
+  const lang = settings?.preference?.language || "id";
 
   let orders: {
     id: string;
