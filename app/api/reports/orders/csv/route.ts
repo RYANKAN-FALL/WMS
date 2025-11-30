@@ -18,7 +18,7 @@ export async function GET(_req: NextRequest) {
 
   const header = "order_id,customer,status,total,created_at\n";
   const rows = orders
-    .map((o) =>
+    .map((o: (typeof orders)[number]) =>
       [
         o.orderId,
         o.user?.nama_lengkap || "Customer",
