@@ -16,7 +16,7 @@ export async function GET(_req: NextRequest) {
   });
 
   const map: Record<string, { total: number; orders: number }> = {};
-  orders.forEach((o) => {
+  orders.forEach((o: (typeof orders)[number]) => {
     const key = o.createdAt.toISOString().slice(0, 7); // YYYY-MM
     if (!map[key]) map[key] = { total: 0, orders: 0 };
     map[key].total += Number(o.totalAmount);
