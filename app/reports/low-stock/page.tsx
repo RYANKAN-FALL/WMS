@@ -26,7 +26,7 @@ export default async function LowStockReportPage() {
       include: { rackLocation: true },
       orderBy: { stock: "asc" },
     });
-    products = rows.map((p) => ({
+    products = rows.map((p: (typeof rows)[number]) => ({
       name: p.name,
       sku: p.sku,
       stock: p.stock,
