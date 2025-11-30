@@ -34,7 +34,7 @@ export default async function RackLocationsPage() {
       },
     });
 
-    transformedRackLocations = rackLocations.map(location => ({
+    transformedRackLocations = rackLocations.map((location: (typeof rackLocations)[number]) => ({
       id: location.id,
       name: location.name,
       description: location.description,
