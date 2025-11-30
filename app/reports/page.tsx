@@ -43,7 +43,7 @@ export default async function ReportsPage() {
         SELECT COUNT(*) as count
         FROM Product
         WHERE stock <= minStock
-      `.then(result => Number(result[0].count)),
+      `.then((result: ProductCountResult[]) => Number(result[0].count)),
       prisma.order.findMany({
         take: 5,
         orderBy: {
