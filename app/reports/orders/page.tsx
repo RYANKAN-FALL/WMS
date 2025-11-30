@@ -51,7 +51,7 @@ export default async function OrdersReportPage() {
         user: { select: { nama_lengkap: true } },
       },
     });
-    orders = rows.map((o) => ({
+    orders = rows.map((o: (typeof rows)[number]) => ({
       id: o.id,
       orderId: o.orderId,
       status: o.status,
