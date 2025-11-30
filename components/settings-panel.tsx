@@ -136,7 +136,7 @@ export function SettingsPanel({ user, initialSettings }: SettingsPanelProps) {
                 profile: {
                   nama: settings.profile?.nama || user.nama,
                   username: settings.profile?.username || user.username,
-                  email: settings.profile?.email || user.email,
+                  email: settings.profile?.email || user.email || "",
                   role: settings.profile?.role || user.role,
                 },
               })
