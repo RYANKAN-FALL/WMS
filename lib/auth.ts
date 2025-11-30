@@ -66,11 +66,11 @@ export const authOptions: NextAuthOptions = {
 
           return {
             id: result.user.id,
-            name: result.user.nama_lengkap,
+            name: (result.user as any).nama_lengkap || result.user.name,
             email: result.user.email,
             username: result.user.username,
             role: result.user.role,
-            nama_lengkap: result.user.nama_lengkap,
+            nama_lengkap: (result.user as any).nama_lengkap || result.user.name,
           };
         }
 
