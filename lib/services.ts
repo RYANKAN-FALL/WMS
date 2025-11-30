@@ -142,7 +142,7 @@ export async function getReportsSummary() {
       const key = d.toISOString().split('T')[0];
       const total = orders
         .filter((o: (typeof orders)[number]) => o.createdAt.toISOString().split('T')[0] === key)
-        .reduce((s, o: (typeof orders)[number]) => s + Number(o.totalAmount), 0);
+        .reduce((s: number, o: (typeof orders)[number]) => s + Number(o.totalAmount), 0);
       days.push({ date: key, total });
     }
 
