@@ -45,7 +45,7 @@ export default async function InventoryPage() {
       orderBy: { createdAt: "desc" },
     });
 
-    transformedProducts = products.map((product) => ({
+    transformedProducts = products.map((product: (typeof products)[number]) => ({
       id: product.id,
       sku: product.sku,
       nama_produk: product.name,
