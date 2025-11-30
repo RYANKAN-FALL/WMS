@@ -31,7 +31,7 @@ export default async function StockMovementReportPage() {
 
   // Group by date (UTC to keep stable)
   const movementsByDate: Record<string, typeof logs> = {};
-  logs.forEach((movement) => {
+  logs.forEach((movement: (typeof logs)[number]) => {
     const date = movement.createdAt.toISOString().split('T')[0];
     if (!movementsByDate[date]) {
       movementsByDate[date] = [];
