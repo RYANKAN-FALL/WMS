@@ -54,22 +54,25 @@ export default async function DashboardPage() {
       }),
     ]);
 
-    const lowStockProducts = products.filter((product) => product.stock <= product.minStock);
+    type ProductRow = (typeof products)[number];
+    type OrderRow = (typeof orders)[number];
+
+    const lowStockProducts = products.filter((product: ProductRow) => product.stock <= product.minStock);
 
     const weekdayNames = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
-    const salesChartData = summary.salesLast7Days.map((day) => {
+    const salesChartData = summary.salesLast7Days.map((day: (typeof summary.salesLast7Days)[number]) => {
       const dateObj = new Date(`${day.date}T00:00:00Z`);
       const weekday = weekdayNames[dateObj.getUTCDay()] || day.date;
       return { name: weekday, jumlah: Math.round(day.total) };
     });
 
-    const recentOrders = orders.map((order) => ({
+    const recentOrders = orders.map((order: OrderRow) => ({
       id: order.id,
       nomor_order: order.orderId,
       customer_nama: order.user?.nama_lengkap || "Customer",
       customer_alamat: "",
       customer_telepon: "",
-      produk: order.orderItems.map((item) => ({
+      produk: order.orderItems.map((item: OrderRow["orderItems"][number]) => ({
         produk_id: item.productId,
         nama_produk: item.product?.name || "Produk",
         jumlah: item.quantity,
@@ -82,7 +85,7 @@ export default async function DashboardPage() {
       updated_at: order.updatedAt,
     }));
 
-    const lowStockProductList = lowStockProducts.map((product) => ({
+    const lowStockProductList = lowStockProducts.map((product: ProductRow) => ({
       id: product.id,
       nama_produk: product.name,
       sku: product.sku,
